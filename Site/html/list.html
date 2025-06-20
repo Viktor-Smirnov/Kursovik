@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel ="stylesheet" href = "../CSS/list.css"> 
+  <title>Список автомобилей</title>
+</head>
+<body>
+   <h1>Список автомобилей</h1>
+    <button id="fetchCarsButton">Показать застрахованные авто</button>
+    <ul id="carsList"></ul>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+	const API_URL = 'http://l92039at.beget.tech/api/cars' // Замени на свой реальный URL API
+	const carsList = document.getElementById('carsList')
+	const fetchCarsButton = document.getElementById('fetchCarsButton')
+
+	function fetchCars() {
+		fetch(API_URL, {
+			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		})
+			.then(response => response.json())
+			.then(data => {
+				console.log('Ответ сервера:', data) // Отладочный вывод
+				carsList.innerHTML = ''
+
+				if (Array.isArray(data)) {
+					// Проверяем, массив ли это
+					data.forEach(car => {
+						const carItem = document.createElement('li')
+						carItem.textContent = `Марка: ${car.brand}, Модель: ${car.model}, Номер: ${car.license_plate}, VIN: ${car.vin_number}, Владелец: ${car.owner_full_name}`
+						carsList.appendChild(carItem)
+					})
+				} else if (data.success && Array.isArray(data.cars)) {
+					data.cars.forEach(car => {
+						const carItem = document.createElement('li')
+						carItem.textContent = `Марка: ${car.brand}, Модель: ${car.model}, Номер: ${car.license_plate}, VIN: ${car.vin_number}, Владелец: ${car.owner_full_name}`
+						carsList.appendChild(carItem)
+					})
+				} else {
+					carsList.innerHTML = 'Ошибка при получении данных!'
+					console.error('Ошибка API:', data)
+				}
+			})
+			.catch(error => {
+				carsList.innerHTML = 'Ошибка при запросе данных!'
+				console.error('Ошибка запроса:', error)
+			})
+	}
+
+	fetchCarsButton.addEventListener('click', fetchCars) // Загружаем данные по кнопке
+})
+
+</script>
+
+</body>
+</html>

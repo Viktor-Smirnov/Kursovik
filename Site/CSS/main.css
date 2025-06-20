@@ -1,0 +1,89 @@
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #120d0d;
+            text-align: left;
+        }
+        header {
+            background: #000000;
+            color: #fff;
+            padding: 20px;
+            font-size: 24px;
+        }
+        
+        .entrance {
+            display: inline-block;
+            margin-top: 5px;
+            padding: 3px 20px;
+            font-size: 18px;
+            background: #6e0101;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            float: right;
+        }
+        .authorizations {
+            display: inline-block;
+            margin-top: 5px;
+            margin: 5px;
+            padding: 3px 20px;
+            font-size: 18px;
+            background: #6e0101;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            float: right;
+        }
+        .dropbutton {
+            background-color: #6e0101;
+            color: #fff;
+            padding: 5px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        .container {
+            position: relative;
+            display: inline-block;
+        }
+        .drop-down {
+            position: absolute;
+            background-color: #000000;
+            min-width: 125px;
+            display: none;
+            border-radius: 8px;
+        }
+        .drop-down a {
+            text-decoration: none;
+            color: #fff;
+            padding: 3px;
+            display: block;
+        }
+        .drop-down a:hover {
+            background-color: #ccc;
+        }
+        .container:hover .drop-down {
+            display: block;
+        }
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #6e0101;
+            color: white;
+            text-decoration: none;
+            border-radius: 15px;
+        }
+        .btn:hover {
+            background: #000000;
+        }
+        .viewing {
+            background-color: #6e0101;
+            color: #fff;
+            padding: 5px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+        }

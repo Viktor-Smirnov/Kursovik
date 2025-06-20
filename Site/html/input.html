@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Форма входа</title>
+    <link rel="stylesheet" href="../CSS/input.css">
+    <link rel="shortcut icon" href="../Ico/Iron Horse.ico" type="image/x-icon">
+</head>
+
+<body>
+    <div class="main">
+        <h1>Вход в систему</h1>
+        <h3>Введите данные</h3>
+
+        <form action="">
+            <label for="first">
+                email:
+            </label>
+            <input type="text" id="first" name="first" 
+                placeholder="Введите email" required>
+
+            <label for="password">
+                Пароль:
+            </label>
+            <input type="password" id="password" name="password" 
+                placeholder="Введите пароль" required>
+                <span class="pass-icon" id="pass-icon"><img src="../Ico/eye.png" style="width: 20px; height: 20px;"></span>
+
+            <div class="wrap">
+                <button type="submit">
+                    Войти
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Скрипт для создания отдельной кнопки, которая показывает пароль при его введении -->
+    <script>
+        const inputPass = document.getElementById('password');
+        const iconPass = document.getElementById('pass-icon');
+
+        iconPass.addEventListener('click', () => {
+            if (inputPass.getAttribute('type') === "password") {
+                inputPass.setAttribute('type' , 'text')
+            } else {
+                inputPass.setAttribute('type' , 'password');
+            }
+        })
+    </script>
+</body>
+
+</html>

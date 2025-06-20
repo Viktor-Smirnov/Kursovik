@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Страхование ОСАГО</title> <!-- Название страницы сайта -->
+    <link rel = "stylesheet" href = "../CSS/registration.css">
+    <link rel = "shortcut icon" href = "../Ico/Iron Horse.ico" type = "image/x-icon">
+</head>
+
+<!-- Создаем окно формы регистрации -->
+<body>
+    <div class = "main">
+        <h1>ОСАГО</h1>
+        <h3>Введите данные</h3>
+            <form id="carForm">
+                <input type="text" name="brand" placeholder="Марка" required />
+                <input type="text" name="model" placeholder="Модель" required />
+                <input type="text" name="license_plate" placeholder="Номер автомобиля" required />
+                <input type="text" name="vin_number" placeholder="VIN номер" required />
+                <input type="text" name="owner_full_name" placeholder="ФИО" required />
+                <button type="submit">Застраховать</button>
+            </form>
+    </div>
+<div id="responseMessage"></div>
+
+<script>
+    document.getElementById("carForm").addEventListener("submit", function (event) {
+    event.preventDefault(); // Предотвращаем стандартную отправку формы
+
+    const API_URL = "http://l92039at.beget.tech/api/cars"; // Замени на свой реальный URL API
+
+    // Собираем данные формы
+    const formData = new FormData(this);
+    const jsonData = {};
+    formData.forEach((value, key) => {
+        jsonData[key] = value;
+    });
+
+    // Отправка запроса через fetch()
+    fetch(API_URL, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(jsonData)
+    })
+    .then(response => response.json())
+    .then(result => {
+        if (result.success) {
+            document.getElementById("responseMessage").innerText = "Данные успешно отправлены!";
+            document.getElementById("carForm").reset(); // Очищаем форму
+        } else {
+					console.log('Ответ сервера:', result) // Выводим в консоль, что вернул сервер
+					document.getElementById('responseMessage').innerText = result.message || 'Неизвестная ошибка'
+					console.log('Ключи объекта:', Object.keys(result))
+				}
+    })
+    .catch(error => {
+        document.getElementById("responseMessage").innerText = "Ошибка при отправке данных!";
+        console.error("Ошибка:", error);
+    });
+});
+</script>
+</body>
+
+</html>

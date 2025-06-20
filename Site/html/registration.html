@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Форма Регистрации</title> <!-- Название страницы сайта -->
+    <link rel="stylesheet" href="../CSS/registration.css">
+    <link rel="shortcut icon" href="../Ico/Iron Horse.ico" type="image/x-icon">
+</head>
+
+<!-- Создаем окно формы регистрации -->
+<body>
+    <div class="main">
+        <h1>Регистрация</h1>
+        <h3>Введите данные</h3>
+        <form action="">
+            <!-- Создаем строку для ввода ФИО -->
+            <label for="fullname">
+                ФИО:
+            </label>
+            <input type="text" id="fullname" name="fullname" 
+                placeholder="Введите ваше ФИО" required>
+            <!-- Создаем строку для ввода номера телефона -->
+            <label for="phone">
+                Номер телефона:
+            </label>
+            <input type="text" id="phone" name="phone" 
+                placeholder="Введите номер телефона" required>
+            <!-- Создаем строку для ввода email-->
+            <label for="email">
+                Email:
+            </label>
+            <input type="text" id="email" name="email" 
+                placeholder="Введите email" required>
+            <!-- Создаем строку для ввода пароля -->
+            <label for="password">
+                Пароль:
+            </label>
+            <input type="password" id="password" name="password" 
+                placeholder="Введите пароль" required>
+            <!-- Создаем строку для ввода повторения пароля -->
+            <label for="confirm-password">
+                Повторите пароль:
+            </label>
+            <input type="password" id="confirm-password" name="confirm-password" 
+                placeholder="Подтвердите пароль" required>
+
+            <div class="wrap">
+                <button type="submit">Зарегистрироваться </button> <!-- Кнопка для регистрации пользователя -->
+            </div>
+        </form>
+    </div>
+    <script>
+        
+    </script>
+</body>
+
+</html>
